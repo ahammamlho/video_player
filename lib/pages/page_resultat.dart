@@ -77,8 +77,8 @@ class _PageResultaState extends State<PageResulta> {
             : data.isEmpty
                 ? const Center(
                     child: Text(
-                    'No Saved URL !',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    'No Saved URL!',
+                    style: TextStyle(fontSize: 18),
                   ))
                 : buildData(),
       ),
@@ -110,11 +110,14 @@ class _PageResultaState extends State<PageResulta> {
                 leading: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
+                  children: [
                     CircleAvatar(
+                      radius: 25,
                       backgroundColor: Colors.white,
-                      backgroundImage: AssetImage(
-                        "assets/img5.png",
+                      child: CircleAvatar(
+                        backgroundColor: Colors.black,
+                        backgroundImage: AssetImage(AppTheme.iconImage),
+                        radius: 25,
                       ),
                     ),
                   ],

@@ -243,9 +243,11 @@ packages:
   multiads:
     dependency: "direct main"
     description:
-      path: "../multiads"
-      relative: true
-    source: path
+      path: "."
+      ref: "v0.0.22"
+      resolved-ref: b648f777f2fa6ac6e63b817f4d639d9074fd1d3f
+      url: "https://github.com/ahammamlho/multiads"
+    source: git
     version: "0.0.1"
   native_admob_flutter:
     dependency: transitive

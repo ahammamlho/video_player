@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "746380157903",
-    "project_id": "tyrplayer-38497",
-    "storage_bucket": "tyrplayer-38497.appspot.com"
+    "project_number": "177063583623",
+    "project_id": "player-ytv",
+    "storage_bucket": "player-ytv.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:746380157903:android:9c0e664d9267944130e8ba",
+        "mobilesdk_app_id": "1:177063583623:android:7576754f45a1a90f64fd22",
         "android_client_info": {
           "package_name": "com.ytvplayer.player"
         }
       },
       "oauth_client": [
         {
-          "client_id": "746380157903-akahnmccbv761ngcb4dalcdvq6829i03.apps.googleusercontent.com",
+          "client_id": "177063583623-nfpu9mbn0eo39vfcqedgm9su9ehdguo9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDhdsLGD0dcFcrYSNb54473uhkc3RCue4A"
+          "current_key": "AIzaSyCXJ8llXfS-zbzAfgZUquDKZD18uVeVW-U"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "746380157903-akahnmccbv761ngcb4dalcdvq6829i03.apps.googleusercontent.com",
+              "client_id": "177063583623-nfpu9mbn0eo39vfcqedgm9su9ehdguo9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -51,24 +51,23 @@ class _PageAddUrlState extends State<PageAddUrl> {
           ],
         ),
         drawer: ftDrawer(context),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            nativeOrBanner(),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  fieldText("Title", titleController, 1),
-                  fieldText("URL", urlController, 2),
-                  fieldText("User Agent", userController, 3),
-                  buttonSave(context)
-                ],
+        body: Center(
+          child: ListView(
+            shrinkWrap: true,
+            children: [
+              nativeOrBanner(),
+              Expanded(
+                child: Column(
+                  children: [
+                    fieldText("Title", titleController, 1),
+                    fieldText("URL", urlController, 2),
+                    fieldText("User Agent", userController, 3),
+                    buttonSave(context)
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

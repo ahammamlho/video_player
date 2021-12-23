@@ -9,27 +9,30 @@ Widget ftDrawer(BuildContext context) {
   return Drawer(
     child: Container(
       color: AppTheme.primary,
-      child: ListView(
-          padding: const EdgeInsets.only(top: 90),
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            const CircleAvatar(
-              radius: 60,
-              backgroundColor: Colors.white,
-              child: CircleAvatar(
-                backgroundColor: Colors.red,
-                backgroundImage: AssetImage("assets/img5.png"),
-                radius: 58,
+      child: Center(
+        child: ListView(
+            shrinkWrap: true,
+            padding: const EdgeInsets.only(bottom: 20),
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              CircleAvatar(
+                radius: 60,
+                backgroundColor: Colors.white,
+                child: CircleAvatar(
+                  backgroundColor: Colors.red,
+                  backgroundImage: AssetImage(AppTheme.iconImage),
+                  radius: 60,
+                ),
               ),
-            ),
-            drawer(FontAwesomeIcons.home, "Home", () {
-              home(context);
-            }),
-            drawer(Icons.star_rate, "Rate App", linkRate),
-            drawer(FontAwesomeIcons.googlePlay, "Others Apps", linkDeveloper),
-            drawer(Icons.mail, "Send suggestions", linkEmail),
-            drawer(Icons.policy, "Privacy Policy", linkPolicy),
-          ]),
+              drawer(FontAwesomeIcons.home, "Home", () {
+                home(context);
+              }),
+              drawer(Icons.star_rate, "Rate App", linkRate),
+              drawer(FontAwesomeIcons.googlePlay, "Others Apps", linkDeveloper),
+              drawer(Icons.mail, "Send suggestions", linkEmail),
+              drawer(Icons.policy, "Privacy Policy", linkPolicy),
+            ]),
+      ),
     ),
   );
 }

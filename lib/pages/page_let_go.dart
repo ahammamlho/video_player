@@ -43,21 +43,23 @@ class _PageLetGoState extends State<PageLetGo> {
         title: Text(configApp["name"]),
       ),
       drawer: ftDrawer(context),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          nativeOrBanner(),
-          const SizedBox(height: 10),
-          Expanded(
-            child: Center(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                letGo(context),
-              ],
-            )),
-          ),
-        ],
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            nativeOrBanner(),
+            const SizedBox(height: 10),
+            Expanded(
+              child: Center(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  letGo(context),
+                ],
+              )),
+            ),
+          ],
+        ),
       ),
     );
   }

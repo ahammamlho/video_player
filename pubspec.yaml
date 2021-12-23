@@ -48,7 +48,11 @@ dependencies:
   onesignal_flutter: ^3.0.0
   liquid_progress_indicator: ^0.4.0
   multiads:
-    path: ../multiads
+    git:
+      url: https://github.com/ahammamlho/multiads
+      ref: v0.0.22
+  # multiads:
+  #   path: ../multiads  //v0.0.22
 
 dev_dependencies:
   flutter_test:

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:multiads/multiads.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
 import 'package:player/pages/page_let_go.dart';
@@ -95,6 +96,7 @@ class _PageSpalshState extends State<PageSpalsh> {
 
   Future<void> fetchAdsData() async {
     try {
+      initOneSignall();
       var url = Uri.parse(Constants.jsonConfigUrl);
       var response = await http.get(url);
       if (response.statusCode == 200) {
@@ -119,15 +121,15 @@ class _PageSpalshState extends State<PageSpalsh> {
     }
   }
 
-  // initOneSignall() async {
-  //   if (kDebugMode) {
-  //     OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-  //   }
-  //   await OneSignal.shared.setAppId("f20e20a4-e395-4aa2-a252-83de4e14e9a0");
-  //   OneSignal.shared
-  //       .setNotificationOpenedHandler((OSNotificationOpenedResult result) {});
-  //   OneSignal.shared
-  //       .promptUserForPushNotificationPermission()
-  //       .then((accepted) {});
-  // }
+  initOneSignall() async {
+    if (kDebugMode) {
+      OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+    }
+    await OneSignal.shared.setAppId("20866794-d7a6-42af-8c59-c7b4d253e236");
+    OneSignal.shared
+        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {});
+    OneSignal.shared
+        .promptUserForPushNotificationPermission()
+        .then((accepted) {});
+  }
 }
