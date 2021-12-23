@@ -43,6 +43,8 @@ dependencies:
   path:
   fl_toast: ^3.1.0
   intl: ^0.17.0
+  better_player: ^0.0.79
+  youtube_explode_dart: ^1.10.8
 
 dev_dependencies:
   flutter_test:

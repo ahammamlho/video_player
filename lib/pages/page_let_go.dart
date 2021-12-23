@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
 import 'package:player/darwer/drawer.dart';
@@ -40,10 +39,7 @@ class _PageLetGoState extends State<PageLetGo> {
       backgroundColor: AppTheme.background,
       appBar: AppBar(
         backgroundColor: AppTheme.primary,
-        title: Text(
-          configApp["name"],
-          style: TextStyle(fontSize: 20, color: AppTheme.colorText),
-        ),
+        title: Text(configApp["name"]),
       ),
       drawer: ftDrawer(context),
       body: Column(
@@ -88,7 +84,7 @@ class _PageLetGoState extends State<PageLetGo> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Let's go",
+              "Start   ",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w600,

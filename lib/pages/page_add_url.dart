@@ -142,6 +142,14 @@ class _PageAddUrlState extends State<PageAddUrl> {
           createdTime: now,
         );
         await HelperDatabase.instance.create(data);
+        setState(() {
+          title = '';
+          url = '';
+          user = '';
+          titleController.text = "";
+          urlController.text = "";
+          userController.text = "";
+        });
         toas(context, ' Saved ');
       }
     }

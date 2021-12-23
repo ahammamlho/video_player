@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:player/app_theme.dart';
+import 'package:player/constants.dart';
 import 'package:player/darwer/drawer.dart';
 import 'package:player/database/helper.dart';
 import 'package:player/database/modeldata.dart';
 import 'package:player/pages/page_add_url.dart';
+import 'package:player/pages/page_player.dart';
 
 class PageResulta extends StatefulWidget {
   const PageResulta({Key? key}) : super(key: key);
@@ -41,7 +43,9 @@ class _PageResultaState extends State<PageResulta> {
     return Scaffold(
       backgroundColor: AppTheme.background,
       appBar: AppBar(
-        title: const Text("ytv player"),
+        title: Text(
+          configApp["name"],
+        ),
         backgroundColor: AppTheme.primary,
         actions: [
           Container(
@@ -51,13 +55,20 @@ class _PageResultaState extends State<PageResulta> {
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                       builder: (context) => const PageAddUrl()));
                 },
-                icon: const Icon(FontAwesomeIcons.plus)),
+                icon: const Icon(FontAwesomeIcons.plus, size: 20)),
           ),
         ],
       ),
       drawer: ftDrawer(context),
       body: isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(
+              child: SizedBox(
+                  height: 80,
+                  width: 80,
+                  child: CircularProgressIndicator(
+                    color: AppTheme.primary,
+                    strokeWidth: 6,
+                  )))
           : data.isEmpty
               ? const Center(
                   child: Text(
@@ -75,6 +86,10 @@ class _PageResultaState extends State<PageResulta> {
           return Card(
             elevation: 4,
             child: ListTile(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => PageVideo(url: data[index].url)));
+                },
                 title: Text(data[index].title),
                 subtitle: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
