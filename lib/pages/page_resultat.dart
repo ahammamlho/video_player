@@ -77,7 +77,7 @@ class _PageResultaState extends State<PageResulta> {
             : data.isEmpty
                 ? const Center(
                     child: Text(
-                    'No Data',
+                    'No Saved URL !',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ))
                 : buildData(),

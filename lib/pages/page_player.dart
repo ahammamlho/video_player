@@ -62,34 +62,27 @@ class _PageVideoState extends State<PageVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => willPopCallback(),
-      child: Scaffold(
-          backgroundColor: AppTheme.background,
-          appBar: AppBar(
-            backgroundColor: AppTheme.primary,
-            title: const Text(" Player "),
-          ),
-          body: Column(
-            children: [
-              isReady
-                  ? AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: BetterPlayer(
-                        controller: _betterPlayerController,
-                      ),
-                    )
-                  : Center(
-                      child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: CircularProgressIndicator(
-                        color: AppTheme.primary,
-                        strokeWidth: 6,
-                      ),
-                    )),
-            ],
-          )),
-    );
+    return Scaffold(
+        backgroundColor: AppTheme.background,
+        appBar: AppBar(
+          backgroundColor: AppTheme.primary,
+          title: const Text(" Player "),
+        ),
+        body: isReady
+            ? AspectRatio(
+                aspectRatio: 16 / 9,
+                child: BetterPlayer(
+                  controller: _betterPlayerController,
+                ),
+              )
+            : Center(
+                child: SizedBox(
+                height: 80,
+                width: 80,
+                child: CircularProgressIndicator(
+                  color: AppTheme.primary,
+                  strokeWidth: 6,
+                ),
+              )));
   }
 }
