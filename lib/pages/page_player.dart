@@ -1,6 +1,8 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
+import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
+import 'package:player/constants.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 class PageVideo extends StatefulWidget {
@@ -43,10 +45,7 @@ class _PageVideoState extends State<PageVideo> {
       setState(() {
         isReady = true;
       });
-    } catch (e) {
-      print(
-          "--------------------------------------------------------------------$e");
-    }
+    } catch (_) {}
   }
 
   @override
@@ -55,35 +54,42 @@ class _PageVideoState extends State<PageVideo> {
     getUrl();
   }
 
-  @override
-  void dispose() {
-    _betterPlayerController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _betterPlayerController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: AppTheme.background,
-        appBar: AppBar(
-          backgroundColor: AppTheme.primary,
-          title: const Text(" Player "),
-        ),
-        body: isReady
-            ? AspectRatio(
-                aspectRatio: 16 / 9,
-                child: BetterPlayer(
-                  controller: _betterPlayerController,
-                ),
-              )
-            : Center(
-                child: SizedBox(
-                height: 80,
-                width: 80,
-                child: CircularProgressIndicator(
-                  color: AppTheme.primary,
-                  strokeWidth: 6,
-                ),
-              )));
+    return WillPopScope(
+      onWillPop: () => willPopCallback(),
+      child: Scaffold(
+          backgroundColor: AppTheme.background,
+          appBar: AppBar(
+            backgroundColor: AppTheme.primary,
+            title: const Text(" Player "),
+          ),
+          body: Column(
+            children: [
+              isReady
+                  ? AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: BetterPlayer(
+                        controller: _betterPlayerController,
+                      ),
+                    )
+                  : Center(
+                      child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: CircularProgressIndicator(
+                        color: AppTheme.primary,
+                        strokeWidth: 6,
+                      ),
+                    )),
+            ],
+          )),
+    );
   }
 }

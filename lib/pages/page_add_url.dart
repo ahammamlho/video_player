@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
+import 'package:player/constants.dart';
 import 'package:player/darwer/drawer.dart';
 import 'package:player/database/helper.dart';
 import 'package:player/database/modeldata.dart';
@@ -23,36 +25,51 @@ class _PageAddUrlState extends State<PageAddUrl> {
   var now = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      appBar: AppBar(
-        backgroundColor: AppTheme.primary,
-        title: const Text("Add URL"),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const PageResulta()));
-                },
-                icon: const Icon(
-                  Icons.read_more,
-                  size: 35,
-                )),
-          ),
-        ],
-      ),
-      drawer: ftDrawer(context),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          fieldText("Title", titleController, 1),
-          fieldText("URL", urlController, 2),
-          fieldText("User Agent", userController, 3),
-          buttonSave(context)
-        ],
+    return WillPopScope(
+      onWillPop: () => willPopCallback(),
+      child: Scaffold(
+        backgroundColor: AppTheme.background,
+        appBar: AppBar(
+          backgroundColor: AppTheme.primary,
+          title: const Text("Add URL"),
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 20),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const PageResulta()));
+                    if (configApp["lhak"] == "oui") {
+                      g_ads.interInstance.showInterstitialAd();
+                    }
+                  },
+                  icon: const Icon(
+                    Icons.read_more,
+                    size: 35,
+                  )),
+            ),
+          ],
+        ),
+        drawer: ftDrawer(context),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            nativeOrBanner(),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  fieldText("Title", titleController, 1),
+                  fieldText("URL", urlController, 2),
+                  fieldText("User Agent", userController, 3),
+                  buttonSave(context)
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -167,5 +184,14 @@ class _PageAddUrlState extends State<PageAddUrl> {
       return false; //'Please enter valid url';
     }
     return true;
+  }
+
+  Widget nativeOrBanner() {
+    if (configApp["nativeOrbanner"] == "native") {
+      return g_ads.nativeInstance.getNativeAdWidget();
+    } else if (configApp["nativeOrbanner"] == "banner") {
+      return CustomBanner(key: UniqueKey(), ads: g_ads.bannerInstance);
+    }
+    return Container();
   }
 }

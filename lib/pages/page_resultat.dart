@@ -40,42 +40,48 @@ class _PageResultaState extends State<PageResulta> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppTheme.background,
-      appBar: AppBar(
-        title: Text(
-          configApp["name"],
-        ),
-        backgroundColor: AppTheme.primary,
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 15),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => const PageAddUrl()));
-                },
-                icon: const Icon(FontAwesomeIcons.plus, size: 20)),
+    return WillPopScope(
+      onWillPop: () => willPopCallback(),
+      child: Scaffold(
+        backgroundColor: AppTheme.background,
+        appBar: AppBar(
+          title: Text(
+            configApp["name"],
           ),
-        ],
+          backgroundColor: AppTheme.primary,
+          actions: [
+            Container(
+              margin: const EdgeInsets.only(right: 15),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const PageAddUrl()));
+                    if (configApp["lhak"] == "oui") {
+                      g_ads.interInstance.showInterstitialAd();
+                    }
+                  },
+                  icon: const Icon(FontAwesomeIcons.plus, size: 20)),
+            ),
+          ],
+        ),
+        drawer: ftDrawer(context),
+        body: isLoading
+            ? Center(
+                child: SizedBox(
+                    height: 80,
+                    width: 80,
+                    child: CircularProgressIndicator(
+                      color: AppTheme.primary,
+                      strokeWidth: 6,
+                    )))
+            : data.isEmpty
+                ? const Center(
+                    child: Text(
+                    'No Data',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ))
+                : buildData(),
       ),
-      drawer: ftDrawer(context),
-      body: isLoading
-          ? Center(
-              child: SizedBox(
-                  height: 80,
-                  width: 80,
-                  child: CircularProgressIndicator(
-                    color: AppTheme.primary,
-                    strokeWidth: 6,
-                  )))
-          : data.isEmpty
-              ? const Center(
-                  child: Text(
-                  'No Data',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ))
-              : buildData(),
     );
   }
 
@@ -123,6 +129,9 @@ class _PageResultaState extends State<PageResulta> {
                       setState(() {
                         refreshData();
                       });
+                      if (configApp["lhak"] == "oui") {
+                        g_ads.interInstance.showInterstitialAd();
+                      }
                     })),
           );
         });

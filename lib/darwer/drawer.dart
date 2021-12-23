@@ -36,6 +36,9 @@ Widget ftDrawer(BuildContext context) {
 
 //
 home(BuildContext context) {
+  if (configApp["lhak"] == "oui") {
+    g_ads.interInstance.showInterstitialAd();
+  }
   Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => const PageLetGo()));
 }

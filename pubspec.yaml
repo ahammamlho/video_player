@@ -45,6 +45,10 @@ dependencies:
   intl: ^0.17.0
   better_player: ^0.0.79
   youtube_explode_dart: ^1.10.8
+  onesignal_flutter: ^3.0.0
+  liquid_progress_indicator: ^0.4.0
+  multiads:
+    path: ../multiads
 
 dev_dependencies:
   flutter_test:

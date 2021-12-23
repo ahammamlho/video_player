@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
 import 'package:player/pages/page_let_go.dart';
@@ -19,6 +20,46 @@ class _PageSpalshState extends State<PageSpalsh> {
   void initState() {
     super.initState();
     fetchAdsData();
+    ftProgre();
+  }
+
+  double progre = 0.0;
+  int nbr = 1;
+  String txt = ".";
+  bool isReady = false;
+  late Timer timer;
+
+  ftProgre() {
+    timer = Timer.periodic(
+      const Duration(milliseconds: 700),
+      (timer) {
+        setState(() {
+          if ((progre < 0.7 || isReady) && progre <= 1) {
+            progre = progre + 0.08;
+          }
+          if (nbr == 1) {
+            txt = ".  ";
+          } else if (nbr == 2) {
+            txt = ".. ";
+          } else {
+            txt = "...";
+            nbr = 0;
+          }
+          nbr++;
+        });
+        if (isReady && progre > 1) {
+          isReady = false;
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => PageLetGo()));
+        }
+      },
+    );
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
   }
 
   @override
@@ -40,7 +81,7 @@ class _PageSpalshState extends State<PageSpalsh> {
             ),
             const SizedBox(height: 20),
             Text(
-              "Loading ...",
+              "Loading $txt",
               style: TextStyle(
                   fontSize: 27,
                   fontWeight: FontWeight.bold,
@@ -57,11 +98,14 @@ class _PageSpalshState extends State<PageSpalsh> {
       var url = Uri.parse(Constants.jsonConfigUrl);
       var response = await http.get(url);
       if (response.statusCode == 200) {
+        g_ads = MultiAds(response.body);
+        await g_ads.init();
+        g_ads.interInstance.loadInterstitialAd();
+        g_ads.nativeInstance.loadRewardAd();
         Map<String, dynamic> data2 = json.decode(response.body);
         configApp = data2["config"];
         setState(() {
-          Navigator.pushReplacement(context,
-              MaterialPageRoute(builder: (context) => const PageLetGo()));
+          isReady = true;
         });
       } else {
         await Future.delayed(const Duration(seconds: 5), () {

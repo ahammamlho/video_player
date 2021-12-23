@@ -1,9 +1,39 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ytvplayer.player">
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
    <application
-        android:label="player"
-        android:icon="@mipmap/ic_launcher">
+        tools:replace="android:label"
+        android:label="ytv player"
+        android:icon="@mipmap/ic_launcher"
+        android:networkSecurityConfig="@xml/network_security_config">
+        
+        <!-- App id -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+         <!-- aplovin sdk -->
+        <meta-data android:name="applovin.sdk.key"
+            android:value="g83IZFbht6VmJte9CtZPKEyIgV25xxC4raBLwXrNUZnuAdO_rve6zebIQ-CoVKI3zSXhkExTygEV3pUTBemQEI"/>
+
+        <activity
+            android:name="com.ironsource.sdk.controller.ControllerActivity"
+            android:configChanges="orientation|screenSize"
+            android:hardwareAccelerated="true" />
+        <activity
+                    android:name="com.ironsource.sdk.controller.InterstitialActivity"
+                    android:configChanges="orientation|screenSize"
+                    android:hardwareAccelerated="true"
+                    android:theme="@android:style/Theme.Translucent" />
+        <activity
+                    android:name="com.ironsource.sdk.controller.OpenUrlActivity"
+                    android:configChanges="orientation|screenSize"
+                    android:hardwareAccelerated="true"
+                    android:theme="@android:style/Theme.Translucent" />
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
