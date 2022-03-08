@@ -97,20 +97,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_applovin_max:
-    dependency: transitive
-    description:
-      name: flutter_applovin_max
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
-  flutter_ironsource_x:
-    dependency: transitive
-    description:
-      name: flutter_ironsource_x
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.6"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -149,20 +135,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.14.3"
-  get_it:
-    dependency: transitive
-    description:
-      name: get_it
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "7.2.0"
-  google_mobile_ads:
-    dependency: transitive
-    description:
-      name: google_mobile_ads
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.1"
   html:
     dependency: transitive
     description:
@@ -240,22 +212,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
-  multiads:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "v0.0.22"
-      resolved-ref: b648f777f2fa6ac6e63b817f4d639d9074fd1d3f
-      url: "https://github.com/ahammamlho/multiads"
-    source: git
-    version: "0.0.1"
-  native_admob_flutter:
-    dependency: transitive
-    description:
-      name: native_admob_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.5.0"
   onesignal_flutter:
     dependency: "direct main"
     description:

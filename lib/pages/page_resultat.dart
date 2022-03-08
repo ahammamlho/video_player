@@ -56,9 +56,7 @@ class _PageResultaState extends State<PageResulta> {
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PageAddUrl()));
-                    if (configApp["lhak"] == "oui") {
-                      g_ads.interInstance.showInterstitialAd();
-                    }
+                    if (configApp["lhak"] == "oui") {}
                   },
                   icon: const Icon(FontAwesomeIcons.plus, size: 20)),
             ),
@@ -132,9 +130,7 @@ class _PageResultaState extends State<PageResulta> {
                       setState(() {
                         refreshData();
                       });
-                      if (configApp["lhak"] == "oui") {
-                        g_ads.interInstance.showInterstitialAd();
-                      }
+                      if (configApp["lhak"] == "oui") {}
                     })),
           );
         });

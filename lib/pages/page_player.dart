@@ -1,8 +1,6 @@
 import 'package:better_player/better_player.dart';
 import 'package:flutter/material.dart';
-import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
-import 'package:player/constants.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 class PageVideo extends StatefulWidget {

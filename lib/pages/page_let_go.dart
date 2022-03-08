@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
 import 'package:player/darwer/drawer.dart';
@@ -83,7 +82,6 @@ class _PageLetGoState extends State<PageLetGo> {
             Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => const PageResulta()));
           }
-          g_ads.interInstance.showInterstitialAd();
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -109,11 +107,6 @@ class _PageLetGoState extends State<PageLetGo> {
   }
 
   Widget nativeOrBanner() {
-    if (configApp["nativeOrbanner"] == "native") {
-      return g_ads.nativeInstance.getNativeAdWidget();
-    } else if (configApp["nativeOrbanner"] == "banner") {
-      return CustomBanner(key: UniqueKey(), ads: g_ads.bannerInstance);
-    }
     return Container();
   }
 }

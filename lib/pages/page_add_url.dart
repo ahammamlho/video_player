@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:multiads/multiads.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
 import 'package:player/darwer/drawer.dart';
@@ -39,9 +38,7 @@ class _PageAddUrlState extends State<PageAddUrl> {
                   onPressed: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PageResulta()));
-                    if (configApp["lhak"] == "oui") {
-                      g_ads.interInstance.showInterstitialAd();
-                    }
+                    if (configApp["lhak"] == "oui") {}
                   },
                   icon: const Icon(
                     Icons.read_more,
@@ -186,11 +183,6 @@ class _PageAddUrlState extends State<PageAddUrl> {
   }
 
   Widget nativeOrBanner() {
-    if (configApp["nativeOrbanner"] == "native") {
-      return g_ads.nativeInstance.getNativeAdWidget();
-    } else if (configApp["nativeOrbanner"] == "banner") {
-      return CustomBanner(key: UniqueKey(), ads: g_ads.bannerInstance);
-    }
     return Container();
   }
 }

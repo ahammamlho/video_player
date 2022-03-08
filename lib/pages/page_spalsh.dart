@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:multiads/multiads.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:player/app_theme.dart';
 import 'package:player/constants.dart';
@@ -100,10 +99,6 @@ class _PageSpalshState extends State<PageSpalsh> {
       var url = Uri.parse(Constants.jsonConfigUrl);
       var response = await http.get(url);
       if (response.statusCode == 200) {
-        g_ads = MultiAds(response.body);
-        await g_ads.init();
-        g_ads.interInstance.loadInterstitialAd();
-        g_ads.nativeInstance.loadRewardAd();
         Map<String, dynamic> data2 = json.decode(response.body);
         configApp = data2["config"];
         setState(() {
